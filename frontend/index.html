@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./public/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
     <title>Chat App</title>
 </head>
 <body >
@@ -11,12 +12,12 @@
         <div class="auth-image"></div>
 
         <!-- Login Frontend Sectiom -->
-        <div class="auth-card hidden" id="login-card">
+        <div class="auth-card" id="login-card">
             <div>
                 <h1>Please Login Here</h1>
                 <span>Don't have an account? <a id="go-to-signup" href="">Create new account</a></span>
             </div>
-            <form action="" class="auth-form" id="login-form">
+            <form action="submit" class="auth-form" id="login-form">
                 <label for="mobile-email">Mobile or Email :</label>
                 <input type="text" id="mobile-email" placeholder="Enter your mobile or email">
                 <label for="auth-password">Enter Password :</label>
@@ -24,7 +25,7 @@
                 <div>
                     <a id="go-to-forget-pass" href="">Forgot password?</a>
                 </div>
-                <button type="button" id="login-btn">Login</button>
+                <button type="submit" id="login-btn">Login</button>
             </form>
         </div>
 
@@ -34,7 +35,7 @@
                 <h1>Create an Account</h1>
                 <span>Already have an account?<a id="go-to-login" href="">Login</a></span>
             </div>
-            <form action="" class="auth-form" id="signup-form">
+            <form action="submit" class="auth-form" id="signup-form">
                 <div id="name-mobile">
                     <div>
                         <label for="name">User Name :</label>
@@ -49,25 +50,26 @@
                 <input type="email" id="email" placeholder="Enter your email id">
                 <label for="password">New Password :</label>
                 <input type="password" id="password" placeholder="Enter your password">
-                <button type="button" id="signup-btn">Signup</button>
+                <button type="submit" id="signup-btn">Signup</button>
                 
             </form>
         </div>
 
         <!-- Forget Pass Frontend Sectiom  -->
-        <div class="auth-card " id="forget-pass-card">
+        <div class="auth-card hidden " id="forget-pass-card">
             <div>
                 <h1>Forget Password</h1>
                 <span>Back to login!<a id="go-to-login-1" href="">Login</a></span>
             </div>
             <form action="" class="auth-form" id="forget-pass-form">
                 <label for="email">User Email :</label>
-                <input type="email" id="email" placeholder="Enter your email id">
+                <input type="email" id="forget-pass-email" placeholder="Enter your email id">
                 <button type="button" id="forget-pass-btn">Generate password reset link </button>
                 
             </form>
         </div>
     </section>
+    <div id="toast" class="toast hidden"></div>
 </body>
 <script src="./public/index.js"></script>
 </html>
