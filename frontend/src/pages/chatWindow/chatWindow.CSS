@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(100deg, #170130, #7d2aa3, #200238);
+  color: #000d55;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#chat-window {
+    display: flex;
+    width: 100%;
+}
+
+#navbar {
+    background-color: #170130;
+    height: 100vh;
+    width: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 20px;
+}
+
+.chat-features, .profile-and-setting {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+#navbar i {
+    color: aliceblue;
+    font-size: 1.2rem;
+    padding: 0;
+    margin: 0;
+}
+
+#navbar i:hover {
+    transform: translateY(-5px);
+    font-size: 1.5rem;
+    color: #fffea8;
+}
