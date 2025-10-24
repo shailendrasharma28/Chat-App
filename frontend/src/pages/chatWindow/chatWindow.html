@@ -11,16 +11,65 @@
     <section id="chat-window" class="">
         <nav id="navbar" class="">
             <div class="chat-features">
-                <a href="#"><i class="fa-solid fa-message"></i></a>
-                <a href="#"><i class="fa-solid fa-user-group"></i></a>
+                <a href="#"><i title="chats" class="fa-solid fa-message"></i></a>
+                <a href="#"><i title="groups" class="fa-solid fa-user-group"></i></a>
             </div>
             <div class="profile-and-setting">
-                <a href="#"><i class="fa-solid fa-gear"></i></a>
-                <a href="#"><i class="fa-solid fa-user"></i></a>
+                <a href="#"><i title="setting" class="fa-solid fa-gear"></i></a>
+                <a href="#"><i title="profile" class="fa-solid fa-user"></i></a>
             </div>
         </nav>
-        <div id="chat-list" class=""></div>
-        <div id="chats" class=""></div>
+        <div id="chat-list" class="">
+            <div class="chatlist-header">
+                <h2>My Chat App</h2>
+                <div>
+                    <a href=""><i title="new chat" class="fa-solid fa-user-plus"></i></a>
+                    <a href=""><i title="options" class="fa-solid fa-ellipsis-vertical"></i></a>
+                </div>
+            </div>
+            <div id="search-input">
+                <label for="chat-search-input"><i class="fa-solid fa-magnifying-glass"></i></label>
+                <input type="search" id="chat-search-input" placeholder="Search or start a new chat">
+            </div>
+            <div id="chatlist-container">
+                <ul class="chatlist-container-ul">
+                    <!-- <li>
+                        <div class="chat-image"></div>
+                        <div class="chat-details">
+                            <div class="chat-name">
+                                <p>Pushpraj Android</p>
+                                <p>3:59</p>
+                            </div>
+                            <div class="message-title">
+                                <p> Your message is...</p>
+                            </div>
+                        </div>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+        <div id="chatbox" class="">
+            <div class="chatbox-header">
+                <div class="chatbox-image-name">
+                    <div class="chatbox-image"></div>
+                    <p>Saurav</p>
+                </div>
+                <div class="chatbox-options">
+                    <a href=""><i title="video call" class="fa-solid fa-video"></i></a>
+                    <a href=""><i title="search" class="fa-solid fa-magnifying-glass"></i></a>
+                    <a href=""><i title="options" class="fa-solid fa-ellipsis-vertical"></i></a>
+                </div>
+            </div>
+            <div class="chatbox-main">
+
+            </div>
+            <div class="chatbox-footer">
+                <div>
+                    <input type="text">
+                    <button type="submit"><i></i></button>
+                </div>
+            </div>
+        </div>
     </section>
 </body>
 </html>

@@ -114,6 +114,7 @@ body {
     border: none;
     padding: 10px 10px;
     border-radius: 20px;
+    font-size: 1rem;
 }
 
 .auth-form input:focus {
