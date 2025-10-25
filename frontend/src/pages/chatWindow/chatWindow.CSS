@@ -248,7 +248,7 @@ body {
 .message {
   max-width: 70%;
   padding: 8px 12px;
-  margin: 6px 0;
+  margin: 6px 8px;
   border-radius: 2rem;
   font-family: sans-serif;
   font-size: 15px;
