@@ -11,6 +11,7 @@ const chatController = {
             res.status(200).json({
                 success: true,
                 message: "Message sent successfully!",
+                newEntry: newMessage
             })
         } catch (error) {
             res.status(500).json({
@@ -28,7 +29,8 @@ const chatController = {
             const {count, rows} = await Message.findAndCountAll({
                 attributes: ["id", "sender_id", "content"],
                 limit: parsedLimit,
-                offset: (parsedPages - 1) * parsedLimit
+                offset: (parsedPages - 1) * parsedLimit,
+                order: [["createdAt", "DESC"]]
             })
             const response = {
                 rows,
