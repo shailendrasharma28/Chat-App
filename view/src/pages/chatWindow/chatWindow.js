@@ -17,8 +17,6 @@ window.addEventListener("DOMContentLoaded", async(e) => {
     }
     const res = await axios.get(`${baseUrl}/chat/message/all`);
     messages = res.data.data;
-    console.log(messages);
-    
     renderMessages();
 })
 

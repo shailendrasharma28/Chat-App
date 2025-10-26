@@ -1,7 +1,7 @@
 const path = require("path")
 const routes = [
-    {staticRoute: "/auth", filePath: "../../frontend/index.html"},
-    {staticRoute: "/chat-window", filePath: "../../frontend/src/pages/chatWindow/chatWindow.html"},
+    {staticRoute: "/auth", filePath: "../view/index.html"},
+    {staticRoute: "/chat-window", filePath: "../view/src/pages/chatWindow/chatWindow.html"},
 ]
 
 module.exports = (app) => {
