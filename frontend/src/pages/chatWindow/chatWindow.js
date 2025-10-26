@@ -1,5 +1,6 @@
 const baseUrl = `http://localhost:3000/api`
 const sendMessageForm = document.getElementById("send-msg-form");
+const socket = io();
 
 let messages = {};
 
@@ -7,11 +8,13 @@ window.addEventListener("DOMContentLoaded", async(e) => {
     e.preventDefault();
     const token = localStorage.getItem("jwt");
     if(!token) {
-        window.location.href = "/frontend/index.html"
+        window.location.href = "/auth"
         showToast("Not authorized, please login again", 'error');
     }
     const res = await axios.get(`${baseUrl}/chat/message/all`);
     messages = res.data.data;
+    console.log(messages);
+    
     renderMessages();
 })
 
@@ -24,8 +27,11 @@ if(sendMessageForm){
         const createMessage = await axios.post(`${baseUrl}/chat/message/new`,
             {content, sender_id}
         )
-        const res = await axios.get(`${baseUrl}/chat/message/all`);
-        messages = res.data.data;
+        
+        const newMsg = createMessage.data.newEntry;
+        
+        socket.emit("newMessage", newMsg);
+        messages.rows.push(newMsg);
         renderMessages();
         sendMessageForm.reset();
     });
@@ -44,6 +50,16 @@ function renderMessages() {
         chatbox.appendChild(msgDiv)
     })
 }
+
+socket.on("connect", () => {
+  console.log("Connected to server:", socket.id);
+});
+
+// Listen for real-time new messages
+socket.on("messageReceived", async(msgData) => {
+  messages.rows.unshift(msgData);
+  renderMessages();
+});
 
 function showToast(message, type = "success") {
   const toast = document.getElementById("toast");

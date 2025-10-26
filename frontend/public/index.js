@@ -58,7 +58,8 @@ if (loginForm) {
         localStorage.setItem("user-details", JSON.stringify(login.data.user));
         localStorage.setItem("jwt", login.data.token)
         setTimeout(() => {
-          window.location.href = "/frontend/src/pages/chatWindow/chatWindow.html"
+          // window.location.href = "/frontend/src/pages/chatWindow/chatWindow.html"
+          window.location.href = "/chat-window"
         }, 1000)
       }
     } catch (error) {
