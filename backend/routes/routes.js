@@ -1,6 +1,6 @@
 const routes = [
-    {path: "/api/user", module: "./apis/routes/userRoutes"},
-    {path: "/api/chat", module: "./apis/routes/chatRoutes"},
+    {path: "/api/user", module: "../apis/routes/userRoutes"},
+    {path: "/api/chat", module: "../apis/routes/chatRoutes"},
 ]
 
 module.exports = (app) => {
