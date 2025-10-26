@@ -1,6 +1,10 @@
 const baseUrl = `http://localhost:3000/api`
 const sendMessageForm = document.getElementById("send-msg-form");
-const socket = io();
+const socket = io(`http://localhost:3000`, {
+    auth: {
+        token: localStorage.getItem("jwt")
+    }
+});
 
 let messages = {};
 
@@ -31,8 +35,6 @@ if(sendMessageForm){
         const newMsg = createMessage.data.newEntry;
         
         socket.emit("newMessage", newMsg);
-        messages.rows.push(newMsg);
-        renderMessages();
         sendMessageForm.reset();
     });
 };
@@ -50,10 +52,6 @@ function renderMessages() {
         chatbox.appendChild(msgDiv)
     })
 }
-
-socket.on("connect", () => {
-  console.log("Connected to server:", socket.id);
-});
 
 // Listen for real-time new messages
 socket.on("messageReceived", async(msgData) => {

@@ -21,7 +21,7 @@ module.exports = (app) => {
   const accessLogs = fs.createWriteStream(path.join(logDir, `access.log`), {
     flags: `a`,
   });
-  app.use(helmet());
+  // app.use(helmet());
   app.use(compression());
   app.use(morgan("combined", { stream: accessLogs }));
 };

@@ -4,6 +4,7 @@ const db = require('./config/db-connection');
 const path = require("path");
 const { createServer } = require('http');
 const { Server } = require('socket.io');
+const socketAuth = require('./middlewares/socketMiddleware');
 require("dotenv").config({ quiet: true })
 
 // Port Defined...
@@ -25,8 +26,10 @@ app.use((req, res, next) => {
   next();
 })
 
+io.use(socketAuth)
+
 io.on('connection', (socket) => {
-  console.log("a user connected:", socket.id);
+  console.log("user connected:", socket.user.name);
 
   socket.on("newMessage", (msgData) => {
     console.log("New message received:", msgData);
@@ -34,7 +37,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('disconnect', () => {
-    console.log("user disconnected", socket.id);
+    console.log("user disconnected", socket.user.name);
   })
 })
 
