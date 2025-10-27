@@ -1,5 +1,6 @@
 const baseUrl = `http://localhost:3000/api`
 const sendMessageForm = document.getElementById("send-msg-form");
+const searchInput = document.getElementById("chat-search-input");
 const socket = io(`http://localhost:3000`, {
     auth: {
         token: localStorage.getItem("jwt")
@@ -31,11 +32,23 @@ if(sendMessageForm){
         )
         
         const newMsg = createMessage.data.newEntry;
-        
-        socket.emit("newMessage", newMsg);
+        const myChat = localStorage.getItem("chat")
+        socket.emit("personal-message", {newMsg, myChat});
         sendMessageForm.reset();
     });
 };
+
+if(searchInput){
+    searchInput.addEventListener("change", (e) => {
+            const myChat = e.target.value;
+            console.log(myChat);
+            
+            localStorage.setItem("chat", myChat)
+            socket.emit("join-room", myChat);
+            alert("Room join:", myChat)
+        }
+    )
+}
 
 function renderMessages() {
     const chatbox = document.querySelector(".chatbox-main");
@@ -52,7 +65,7 @@ function renderMessages() {
 }
 
 // Listen for real-time new messages
-socket.on("messageReceived", async(msgData) => {
+socket.on("personal", async(msgData) => {
   messages.rows.unshift(msgData);
   renderMessages();
 });
