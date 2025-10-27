@@ -33,7 +33,7 @@ if(sendMessageForm){
         
         const newMsg = createMessage.data.newEntry;
         const myChat = localStorage.getItem("chat")
-        socket.emit("personal-message", {newMsg, myChat});
+        socket.emit("personal-message", {msgData: newMsg,roomName: myChat});
         sendMessageForm.reset();
     });
 };
